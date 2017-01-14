@@ -40,9 +40,20 @@ class NewRecipe extends React.Component {
     if (this.state.ingredients === ""
       || this.state.title === "") {
       console.log('Both fields must be filled out');
-
       return;
       }
+
+    // check to make sure that the recipe title is unique
+    if (this.props.recipes.some( (recipe) => {
+      return (this.state.title === recipe.title);
+    })) {
+      console.log("Title must be unique");
+      return;
+    }
+
+    this.props.recipes.some( (recipe) => {
+      return (this.state.title === recipe.title);
+    })
 
     this.props.addNewRecipe({
       title: this.state.title,
