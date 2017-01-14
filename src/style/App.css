@@ -36,14 +36,30 @@
   padding-left: 10px;
 }
 
+.ingredient-box {
+  border: 1px solid #000;
+}
+
 /* Temp styles */
 
 .new-recipe-box,
 .edit-recipe-box {
-  border: 1px dashed teal;
-  margin: 15px 0;
+  border: 3px dashed teal;
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
 }
 
+.dialogue-box {
+  margin: 10px auto;
+  padding: 10px;
+  width: 80%;
+  color: #fff;
+  background-color: rgb(40, 40, 40);
+  border-radius: 20px;
+}
 
 /* Temp styles */
 

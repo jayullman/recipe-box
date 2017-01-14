@@ -13,12 +13,10 @@ import './style/index.css';
 const store = createStore(reducers);
 
 // maybe use to update local storage?
+
 store.subscribe( () => {
   console.log("store changed", store.getState());
-
 });
-store.dispatch({type: 'yo'});
-
 // end Redux section
 
 

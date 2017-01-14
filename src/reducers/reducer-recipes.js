@@ -1,4 +1,4 @@
-import { ADD_RECIPE } from '../actions/action-keys';
+import { ADD_RECIPE } from '../constants/action-keys';
 
 export default (state = [], action) => {
 

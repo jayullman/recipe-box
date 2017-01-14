@@ -1,7 +1,8 @@
 import {
   ADD_RECIPE,
-  SELECT_RECIPE
-} from './action-keys';
+  SELECT_RECIPE,
+  CHANGE_VIEW
+} from '../constants/action-keys';
 
 
 
@@ -20,4 +21,12 @@ export const addNewRecipe = (recipe) => {
     type: ADD_RECIPE,
     payload: recipe
   };
+}
+
+export const changeView = (view) => {
+  return {
+    type: CHANGE_VIEW,
+    payload: view
+  }
+
 }

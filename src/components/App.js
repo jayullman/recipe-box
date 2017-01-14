@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-
-
+import { connect } from 'react-redux';
 
 import '../style/App.css';
-import Test from '../test.js';
 
+// import all view constants
+
+import {
+  MAIN_VIEW,
+  NEW_RECIPE_VIEW,
+  EDIT_RECIPE_VIEW
+ } from '../constants/view-keys';
 
 import RecipeBox from '../containers/RecipeBox';
-import NewRecipe from './NewRecipe';
+import NewRecipe from '../containers/NewRecipe';
 import EditRecipe from './EditRecipe';
 
 
@@ -20,25 +25,34 @@ import { selectRecipe, addRecipe } from '../actions/index';
 // store.dispatch({type: "CHANGE_VIEW", payload: 20});
 // store.dispatch({type: "DEC", payload: 1400});
 
-export default class App extends Component {
+class App extends Component {
 
 
   render() {
-
+    console.log(this.props.view);
     return (
       <div className="App">
         <div className="App-header">
 
           <h2 >The Recipe Box</h2>
-        <Test />
         </div>
         <p className="App-intro">
           Add recipes and stuff
         </p>
+        <p>Current View = {this.props.view}</p>
+        {this.props.view == 'NEW_RECIPE_VIEW' ? <NewRecipe /> : null}
+        {this.props.view == 'EDIT_RECIPE_VIEW' ? <EditRecipe /> : null}
+
         <RecipeBox />
-        <NewRecipe />
-        <EditRecipe />
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    view: state.view
+  };
+}
+
+export default connect(mapStateToProps)(App);
