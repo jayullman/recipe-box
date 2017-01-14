@@ -7,17 +7,23 @@ import RecipeTitles from '../components/RecipeTitles';
 
 class RecipeBox extends React.Component {
 
-  handleClick = () => {
-    this.props.selectRecipe();
+  handleClick = (event) => {
+    console.log('in handle click: ', event.target.id);
+    this.props.selectRecipe(event.target.id);
   }
 
   render() {
+
+  // this element will be displayed underneath the currently
+  // selected recipe within the <ul> list
+  const ingredientBox = '' // TODO: finish this
 
   // take the array of recipes from the store and map each recipe title
   // to new array of <li> elements
   const listItems = this.props.recipes.map( (recipe) => {
     return (
       <li
+        id={recipe.title}
         key={recipe.title}
         onClick={this.handleClick}>{recipe.title}</li>
     );

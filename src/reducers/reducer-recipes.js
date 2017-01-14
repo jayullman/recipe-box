@@ -10,6 +10,10 @@ export default (state = [], action) => {
       return newRecipesArray
       break;
 
+    // TODO: make DELETE_RECIPE case
+    case 'DELETE_RECIPE':
+    break;
+
     default:
         return state;
 

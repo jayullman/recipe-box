@@ -1,10 +1,16 @@
-import { ADD_RECIPE } from './action-keys';
+import {
+  ADD_RECIPE,
+  SELECT_RECIPE
+} from './action-keys';
 
 
 
-export const selectRecipe = (recipe) => {
-  console.log('hiiiii');
-  return {type: 't'};
+export const selectRecipe = (recipeTitle) => {
+  console.log('selectRecipe Action fired with: ', recipeTitle);
+  return {
+    type: SELECT_RECIPE,
+    payload: recipeTitle
+  };
 }
 
 
