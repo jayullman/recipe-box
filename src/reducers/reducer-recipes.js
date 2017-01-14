@@ -1,8 +1,17 @@
-export default (state = [], action) => {
-  if (action.type === "ADD_RECIPE") {
-    return "DEC!";
-  } else {
-    return state;
-  }
+import { ADD_RECIPE } from '../actions/action-keys';
 
+export default (state = [], action) => {
+
+  switch (action.type) {
+    case ADD_RECIPE:
+      // spreads state.recipes array into new array and
+      // attaches the new recipe object on the end
+      const newRecipesArray = [...state, action.payload]
+      return newRecipesArray
+      break;
+
+    default:
+        return state;
+
+  }
 };
