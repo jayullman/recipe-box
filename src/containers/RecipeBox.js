@@ -13,14 +13,21 @@ class RecipeBox extends React.Component {
 
   render() {
 
+  // take the array of recipes from the store and map each recipe title
+  // to new array of <li> elements
+  const listItems = this.props.recipes.map( (recipe) => {
+    return (
+      <li
+        key={recipe.title}
+        onClick={this.handleClick}>{recipe.title}</li>
+    );
+  });
+
   return (
     <div className="recipe-box">
       <h3>Recipes</h3>
       <ul>
-        <RecipeTitles />
-        <li
-          
-          onClick={this.handleClick}>Test Recipe Title (hard-coded)</li>
+        {listItems}
     </ul>
   </div>
   );
