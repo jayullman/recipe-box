@@ -35,10 +35,41 @@ class NewRecipe extends React.Component {
     // each item. The regex splits based on comma, or comma-space
     const ingredients = this.state.ingredients.split(/,\s*/);
 
+    // checks to make sure that both Title and Ingredients fields
+    // are filled out
+    if (this.state.ingredients === ""
+      || this.state.title === "") {
+      console.log('Both fields must be filled out');
+
+      return;
+      }
+
     this.props.addNewRecipe({
       title: this.state.title,
       ingredients: ingredients
     });
+
+    this.setState({
+      title: "",
+      ingredients: ""
+    });
+  }
+
+  handleCancel = () => {
+    this.setState({
+      title: "",
+      ingredients: ""
+    });
+
+    // change view to make the box invisible
+  };
+
+  handleKeyPress = (event) => {
+    if (event.charCode == 13) {
+      // calls the handleAddNewRecipe function if user presses
+      // enter in either of the input fields
+      this.handleAddNewRecipe();
+    }
   }
 
   // functin will handle whenever the value of the form changes, ie
@@ -66,11 +97,12 @@ class NewRecipe extends React.Component {
       <div className="new-recipe-box">
         <h3>Add a New Recipe (invisible)</h3>
 
-        <h4>Recipe</h4>
+        <h4>Recipe Title</h4>
         <input
           id="title"
           value={this.state.title}
           onChange={this.handleChange}
+          onKeyPress={this.handleKeyPress}
         />
 
         <h4>Ingredients</h4>
@@ -78,10 +110,12 @@ class NewRecipe extends React.Component {
           id="ingredients"
           value={this.state.ingredients}
           onChange={this.handleChange}
+          onKeyPress={this.handleKeyPress}
         />
         <br/>
-        <button onClick={this.handleAddNewRecipe}>Add Recipe</button>
-        <CancelButton />
+        <button onClick={this.handleAddNewRecipe}>Add</button>
+        <button onClick={this.handleCancel}>Cancel</button>
+
       </div>
 
   );
