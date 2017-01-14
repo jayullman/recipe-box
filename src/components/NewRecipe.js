@@ -4,6 +4,8 @@
 // box will remain visible during testing
 
 import React from 'react';
+import AddButton from './buttons/AddButton'
+import CancelButton from './buttons/CancelButton'
 
 export default function() {
 
@@ -16,7 +18,9 @@ export default function() {
 
       <h4>Ingredients</h4>
       <input />
-
+      <br/>
+      <AddButton />
+      <CancelButton />
     </div>
   );
 }

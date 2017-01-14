@@ -1,4 +1,7 @@
 import React from 'react';
+import EditButton from './buttons/EditButton'
+import CancelButton from './buttons/CancelButton'
+import DeleteButton from './buttons/DeleteButton'
 
 export default function() {
 
@@ -11,7 +14,10 @@ export default function() {
 
       <h4>Edit Ingredients</h4>
       <input />
-
+      <br/>
+      <EditButton />
+      <DeleteButton />
+      <CancelButton />
     </div>
   );
 }
