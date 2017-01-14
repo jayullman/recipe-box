@@ -18,7 +18,33 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+
+.recipe-box {
+  border: 5px solid gray;
+
 }
+
+.recipe-box ul {
+  padding: 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.recipe-title {
+  border: 2px dotted teal;
+  list-style-type: none;
+  margin: 10px 0;
+  text-align: left;
+  padding-left: 10px;
+}
+
+/* Temp styles */
+
+.new-recipe-box,
+.edit-recipe-box {
+  border: 1px dashed teal;
+  margin: 15px 0;
+}
+
+
+/* Temp styles */
