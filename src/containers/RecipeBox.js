@@ -4,49 +4,41 @@ import { selectRecipe, addRecipe, changeView } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 // import all view constants
-import { MAIN_VIEW, NEW_RECIPE_VIEW } from '../constants/view-keys';
+import {
+  NEW_RECIPE_VIEW,
+  EDIT_RECIPE_VIEW
+} from '../constants/view-keys';
 
-import RecipeTitles from '../components/RecipeTitles';
+import IngredientList from '../components/IngredientList';
 
 class RecipeBox extends React.Component {
 
   handleClick_RecipeTitle = (event) => {
-    console.log('in handle click: ', event.target.id);
-    this.props.selectRecipe(event.target.id);
+    // return a copy of the selcted recipe object
+    const getCopyOfSelectedRecipeObject = () => {
+      const selectedRecipeTitle = event.target.id;
+
+      const recipeObject = this.props.recipes.find( recipe => {
+        return recipe.title === selectedRecipeTitle;
+      });
+      return recipeObject;
+    }
+
+    this.props.selectRecipe(getCopyOfSelectedRecipeObject());
   }
 
   handleClick_NewRecipeButton = () => {
-    console.log('in handleclick');
 
-    this.props.changeView("NEW_RECIPE_VIEW");
+
+    this.props.changeView(NEW_RECIPE_VIEW);
+  }
+
+  handleClick_EditRecipeButton = () => {
+    this.props.changeView(EDIT_RECIPE_VIEW);
+    console.log('clicked!!');
   }
 
   render() {
-    let ingredientBox = null;
-
-    // if a recipe is selected, create an array of <li> elements
-    if (this.props.selectedRecipe) {
-      // return the appropriate recipe
-      const currentRecipe = this.props.recipes.find( (recipe) => {
-        return recipe.title === this.props.selectedRecipe;
-      });
-      // create a mapped array of <li> elements
-      const ingredientsArray = currentRecipe.ingredients.map( (ingredient) => {
-        return (
-          <li key={ingredient}>{ingredient}</li>
-        );
-      })
-
-      // this element will be displayed underneath the currently
-      // selected recipe within the <ul> list
-      ingredientBox = (
-        <div className="ingredient-box">
-          {ingredientsArray}
-        </div>
-      );
-
-    }
-
 
 
   // take the array of recipes from the store and map each recipe title
@@ -61,9 +53,16 @@ class RecipeBox extends React.Component {
 
           onClick={this.handleClick_RecipeTitle}>{recipe.title}
         </li>
-        {recipe.title === this.props.selectedRecipe
-          ? ingredientBox
+        {recipe.title === this.props.selectedRecipe.title
+          ? <IngredientList
+            changeView={this.handleClick_EditRecipeButton}
+            recipes={this.props.recipes}
+            selectedRecipe={this.props.selectedRecipe}
+            />
           : null}
+        {/*}{recipe.title === this.props.selectedRecipe
+          ? ingredientBox
+          : null}*/}
       </div>
     );
   });

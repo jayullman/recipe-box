@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import '../style/App.css';
 
 // import all view constants
-
 import {
   MAIN_VIEW,
   NEW_RECIPE_VIEW,
@@ -12,26 +11,20 @@ import {
  } from '../constants/view-keys';
 
 import RecipeBox from '../containers/RecipeBox';
-import NewRecipe from '../containers/NewRecipe';
-import EditRecipe from './EditRecipe';
+import RecipeDialogue from '../containers/RecipeDialogue';
 
 
-// import recipesReducer from './reducers/reducer-recipes';
-// import viewReducer from './reducers/reducer-view';
-// import reducers from '../reducers/combined-reducers';
-import { selectRecipe, addRecipe } from '../actions/index';
-
-// store.dispatch({type: "ADD_RECIPE", payload: 0});
-// store.dispatch({type: "CHANGE_VIEW", payload: 20});
-// store.dispatch({type: "DEC", payload: 1400});
 
 class App extends Component {
 
 
   render() {
-    console.log(this.props.view);
     return (
-      <div className="App">
+      <div
+        className="App"
+        style={this.props.view !== MAIN_VIEW
+          ? {backgroundColor: 'rgb(150, 150, 150)'}
+          : null}>
         <div className="App-header">
 
           <h2 >The Recipe Box</h2>
@@ -40,8 +33,11 @@ class App extends Component {
           Add recipes and stuff
         </p>
         <p>Current View = {this.props.view}</p>
-        {this.props.view == 'NEW_RECIPE_VIEW' ? <NewRecipe /> : null}
-        {this.props.view == 'EDIT_RECIPE_VIEW' ? <EditRecipe /> : null}
+        {this.props.view === NEW_RECIPE_VIEW
+          || this.props.view === EDIT_RECIPE_VIEW
+            ? <RecipeDialogue propTest={true} />
+            : null}
+        {/*{this.props.view == EDIT_RECIPE_VIEW ? <EditRecipe /> : null}*/}
 
         <RecipeBox />
       </div>
