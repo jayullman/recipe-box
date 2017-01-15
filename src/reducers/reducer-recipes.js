@@ -41,7 +41,6 @@ export default (state = [], action) => {
 
       newRecipesArray[index].title = action.newTitle;
       newRecipesArray[index].ingredients = action.newIngredients;
-console.log(action.newIngredients);
       return newRecipesArray;
 
 
@@ -58,7 +57,6 @@ console.log(action.newIngredients);
 
       return recipe.title !== action.payload
     });
-    console.log('After delete: ' + newRecipesArray);
 
     return newRecipesArray;
 

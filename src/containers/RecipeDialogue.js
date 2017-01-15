@@ -82,7 +82,6 @@ class NewRecipe extends React.Component {
   // call the action creator with an object that describes the
   // updated values along with the title of the original recipe
   handleEdit = () => {
-    console.log('edit selected');
     this.props.editRecipe({
       newTitle: this.state.title,
       newIngredients: this.state.ingredients.split(/,\s*/),
@@ -99,7 +98,6 @@ class NewRecipe extends React.Component {
     // TODO: complete this handler, call action creator
 
     this.props.deleteRecipe(this.props.selectedRecipe);
-    console.log('delete selected');
 
     // revert back to main view after deletion
     this.props.changeView(MAIN_VIEW);
@@ -148,12 +146,6 @@ class NewRecipe extends React.Component {
     }
 
   }
-
-
-componentDidMount() {
-  console.log('mounted');
-  // this.refs.nameInput.focus()
-}
 
 
   render() {

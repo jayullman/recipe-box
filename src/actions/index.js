@@ -40,7 +40,6 @@ export const changeView = (view) => {
 }
 
 export const editRecipe = (updateObj) => {
-  console.log(updateObj.newIngredients);
   return {
     type: EDIT_RECIPE,
     newTitle: updateObj.newTitle,
@@ -50,7 +49,6 @@ export const editRecipe = (updateObj) => {
 }
 
 export const deleteRecipe = (recipe) => {
-  console.log(' ', recipe)
   return {
     type: DELETE_RECIPE,
     payload: recipe.title

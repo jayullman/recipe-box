@@ -12,7 +12,6 @@ export default class IngredientList extends React.Component {
         return recipe.title === this.props.selectedRecipe.title;
       });
       // create a mapped array of <li> elements
-      console.log(currentRecipe);
       const ingredientsArray = currentRecipe.ingredients.map( (ingredient) => {
         return (
           <li
