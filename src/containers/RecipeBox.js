@@ -30,12 +30,13 @@ class RecipeBox extends React.Component {
   handleClick_NewRecipeButton = () => {
 
 
+
+
     this.props.changeView(NEW_RECIPE_VIEW);
   }
 
   handleClick_EditRecipeButton = () => {
     this.props.changeView(EDIT_RECIPE_VIEW);
-    console.log('clicked!!');
   }
 
   render() {

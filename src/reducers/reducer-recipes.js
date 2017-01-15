@@ -12,20 +12,32 @@ export default (state = [], action) => {
 
 
       case EDIT_RECIPE:
-      // filter every recipe that is not the
-      console.log('made it to edit-recip action creator');
-      return state;
+        /*
+        {
+          newTitle: updateObj.newTitle,
+          newIngredients: updateObj.newIngredients,
+          originalTitle: updateObj.originalTitle
+        }
+        */
 
-    
+
+      newRecipesArray = [...state];
+      // find the index of the object to edit
+      let index = newRecipesArray.map( recipe => {
+        return recipe.title}).indexOf(action.originalTitle);
+
+      newRecipesArray[index].title = action.newTitle;
+      newRecipesArray[index].ingredients = action.newIngredients;
+console.log(action.newIngredients);
+      return newRecipesArray;
+
+
     case DELETE_RECIPE:
     // find the recipe in the array, remove, and send
     // new array to store
-    console.log('Before delete: ' + state)
     newRecipesArray = state.filter( recipe => {
       // if the recipe equals the passed in recipe title,
       // that object is not given to the new array
-      console.log('recipe title: ', recipe.title);
-      console.log('action payload: ', action.payload);
 
       return recipe.title !== action.payload
     });
