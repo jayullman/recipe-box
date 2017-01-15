@@ -15,7 +15,9 @@ export default class IngredientList extends React.Component {
       console.log(currentRecipe);
       const ingredientsArray = currentRecipe.ingredients.map( (ingredient) => {
         return (
-          <li key={ingredient}>{ingredient}</li>
+          <li
+            key={ingredient}>{ingredient}
+          </li>
         );
       })
 
@@ -23,12 +25,13 @@ export default class IngredientList extends React.Component {
       // selected recipe within the <ul> list
 
         return (
-          <div>
-            <h5>Ingredients:</h5>
-            <ul className="ingredient-box">
+          <div className="ingredient-box">
+            <h5 className="ingredients-title">Ingredients:</h5>
+            <ul>
             {ingredientsArray}
             </ul>
-            <button onClick={this.props.changeView}>Edit This Recipe</button>
+            <button className="edit-recipe-button" onClick={this.props.changeView}>Edit This Recipe</button>
+            <button className="edit-recipe-button" onClick={this.props.closeList}>Close</button>
           </div>
         );
 

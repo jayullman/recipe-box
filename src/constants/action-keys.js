@@ -4,3 +4,4 @@ export const SELECT_RECIPE = 'SELECT_RECIPE';
 export const CHANGE_VIEW = 'CHANGE_VIEW';
 export const EDIT_RECIPE = 'EDIT_RECIPE';
 export const DELETE_RECIPE = 'DELETE_RECIPE';
+export const ADD_FROM_LOCAL_STORAGE = 'ADD_FROM_LOCAL_STORAGE';

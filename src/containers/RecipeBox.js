@@ -29,14 +29,18 @@ class RecipeBox extends React.Component {
 
   handleClick_NewRecipeButton = () => {
 
-
-
-
     this.props.changeView(NEW_RECIPE_VIEW);
   }
 
   handleClick_EditRecipeButton = () => {
     this.props.changeView(EDIT_RECIPE_VIEW);
+  }
+
+  // when the close button is pressed, an empty
+  // object is passed to selectRecipe action creator,
+  // deselecting any recipe
+  handleClick_CloseButton = () => {
+    this.props.selectRecipe({});
   }
 
   render() {
@@ -51,12 +55,14 @@ class RecipeBox extends React.Component {
       <div key={recipe.title}>
         <li
           id={recipe.title}
-
+          className="recipe-title"
           onClick={this.handleClick_RecipeTitle}>{recipe.title}
         </li>
+        {/* TODO: Add transition here */}
         {recipe.title === this.props.selectedRecipe.title
           ? <IngredientList
             changeView={this.handleClick_EditRecipeButton}
+            closeList={this.handleClick_CloseButton}
             recipes={this.props.recipes}
             selectedRecipe={this.props.selectedRecipe}
             />

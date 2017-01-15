@@ -6,11 +6,11 @@ import {
   EDIT_RECIPE,
   SELECT_RECIPE,
   CHANGE_VIEW,
-  DELETE_RECIPE
+  DELETE_RECIPE,
+  ADD_FROM_LOCAL_STORAGE
 } from '../constants/action-keys';
 
 export const selectRecipe = (recipeObject) => {
-  console.log(recipeObject);
   return {
     type: SELECT_RECIPE,
     payload: recipeObject
@@ -23,6 +23,14 @@ export const addNewRecipe = (recipe) => {
     payload: recipe
   };
 }
+
+export const addFromLocalStorage = (recipes) => {
+  return {
+    type: ADD_FROM_LOCAL_STORAGE,
+    payload: recipes
+  };
+}
+
 
 export const changeView = (view) => {
   return {

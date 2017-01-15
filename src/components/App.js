@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Header from './Header';
+import Footer from './Footer';
 
 import '../style/App.css';
 
@@ -10,13 +13,25 @@ import {
   EDIT_RECIPE_VIEW
  } from '../constants/view-keys';
 
+import { addFromLocalStorage } from '../actions/index';
+
 import RecipeBox from '../containers/RecipeBox';
 import RecipeDialogue from '../containers/RecipeDialogue';
 
 
-
 class App extends Component {
 
+
+  // check localstorare, if the recipes key exists,
+  // populate the store with the value
+  componentWillMount() {
+    if (localStorage.getItem('recipes') && localStorage.getItem('recipes') !== 'undefined') {
+      const storedRecipes = JSON.parse(localStorage.getItem('recipes'));
+      if (storedRecipes.length > 0) {
+        this.props.addInitialRecipes(storedRecipes);
+      }
+    }
+  }
 
   render() {
     return (
@@ -25,14 +40,7 @@ class App extends Component {
         style={this.props.view !== MAIN_VIEW
           ? {backgroundColor: 'rgb(150, 150, 150)'}
           : null}>
-        <div className="App-header">
-
-          <h2 >The Recipe Box</h2>
-        </div>
-        <p className="App-intro">
-          Add recipes and stuff
-        </p>
-        <p>Current View = {this.props.view}</p>
+        <Header />
         {this.props.view === NEW_RECIPE_VIEW
           || this.props.view === EDIT_RECIPE_VIEW
             ? <RecipeDialogue propTest={true} />
@@ -40,6 +48,7 @@ class App extends Component {
         {/*{this.props.view == EDIT_RECIPE_VIEW ? <EditRecipe /> : null}*/}
 
         <RecipeBox />
+        <Footer />
       </div>
     );
   }
@@ -50,5 +59,10 @@ const mapStateToProps = (state) => {
     view: state.view
   };
 }
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    addInitialRecipes: addFromLocalStorage,
+  }, dispatch);
+}
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

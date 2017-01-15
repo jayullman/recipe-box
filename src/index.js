@@ -9,14 +9,28 @@ import App from './components/App';
 import './style/index.css';
 
 
-// Redux section
+// create REdux store
 const store = createStore(reducers);
 
-// maybe use to update local storage?
+// Redux section
 
-store.subscribe( () => {
-  console.log("store changed", store.getState());
-});
+// maybe use to update local storage?
+// let recipesArray = [];
+// store.subscribe( () => {
+//   console.log("store changed", store.getState());
+//   recipesArray = store.getState().recipes;
+//
+//   // if there are any recipes in the users recipe box,
+//   // update localstorage with the new array of recipes
+//   if (recipesArray.length > 0) {
+//     localStorage.setItem('recipes', JSON.stringify(recipesArray));
+//   }
+//
+//   console.log('local storage: ', localStorage.getItem('recipes'));
+//
+// });
+
+
 // end Redux section
 
 

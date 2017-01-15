@@ -48,7 +48,7 @@ class NewRecipe extends React.Component {
     // are filled out
     if (this.state.ingredients === ""
       || this.state.title === "") {
-      console.log('Both fields must be filled out');
+      alert('Both fields must be filled out');
       return;
       }
 
@@ -56,7 +56,7 @@ class NewRecipe extends React.Component {
     if (this.props.recipes.some( (recipe) => {
       return (this.state.title === recipe.title);
     })) {
-      console.log("Title must be unique");
+      alert("Title must be unique");
       return;
     }
 
@@ -150,7 +150,10 @@ class NewRecipe extends React.Component {
   }
 
 
-
+componentDidMount() {
+  console.log('mounted');
+  // this.refs.nameInput.focus()
+}
 
 
   render() {
@@ -158,7 +161,7 @@ class NewRecipe extends React.Component {
 
 
     return (
-      <div className="new-recipe-box">
+      <div className="dialogue-mask">
         <div className="dialogue-box">
           {this.props.view === NEW_RECIPE_VIEW
             ? <h3>Add a New Recipe</h3>
@@ -168,6 +171,7 @@ class NewRecipe extends React.Component {
 
           <h4>Recipe Title</h4>
           <input
+            autoFocus
             id="title"
             value={this.state.title}
             onChange={this.handleChange}
