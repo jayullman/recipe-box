@@ -72,6 +72,9 @@ class RecipeBox extends React.Component {
     <div className="recipe-box">
       <h3>Recipes</h3>
       <button onClick={this.handleClick_NewRecipeButton}>New Recipe</button>
+      {this.props.recipes.length === 0
+        ? <h4>Click 'New Recipe' to begin adding recipes</h4>
+        : null}
       <ul>
         {listItems}
     </ul>
