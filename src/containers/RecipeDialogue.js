@@ -114,11 +114,17 @@ class NewRecipe extends React.Component {
     // change view to make the box invisible
   };
 
+  // this function will submit a new recipe or confirm an edit
+  // by allowing the user to hit enter
   handleKeyPress = (event) => {
-    if (event.charCode === 13) {
+    if (event.charCode === 13 ) {
       // calls the handleAddNewRecipe function if user presses
       // enter in either of the input fields
-      this.handleAdd();
+      if (this.props.view === NEW_RECIPE_VIEW) {
+        this.handleAdd();
+      } else if (this.props.view === EDIT_RECIPE_VIEW) {
+        this.handleEdit();
+      }
     }
   }
 
