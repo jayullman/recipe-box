@@ -182,6 +182,7 @@ class NewRecipe extends React.Component {
             value={this.state.ingredients}
             onChange={this.handleChange}
             onKeyPress={this.handleKeyPress}
+            placeholder="separate with comma"
           />
           <br/>
           <div className="button-container">
