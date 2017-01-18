@@ -9,7 +9,7 @@ function Footer() {
       Visit me on <a target="_blank"
         href="https://github.com/libeja">GitHub </a><a
           target="_blank"
-          href="https://github.com/libeja/camper-leaderboard"><i
+          href="https://github.com/libeja"><i
             className="fa fa-github" aria-hidden="true"></i></a></small>
     </div>
   );
