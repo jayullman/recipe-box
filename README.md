@@ -1,5 +1,7 @@
 # Recipe Box
 
+Live site: https://libeja.github.io/recipe-box/
+
 ## freeCodeCamp Project using React.js
 
 New technologies:
