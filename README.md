@@ -1,6 +1,6 @@
 # Recipe Box
 
-Live site: https://libeja.github.io/recipe-box/
+Live site: https://jayullman.github.io/recipe-box/
 
 ## freeCodeCamp Project using React.js
 
